@@ -7,7 +7,10 @@ const createWindow = () => {
     width: 800,
     height: 600,
     webPreferences: {
+      // 集成 node
       nodeIntegration: true,
+      // 关闭上下文隔离，兼容 require 引入
+      contextIsolation: false,
     },
   });
 
