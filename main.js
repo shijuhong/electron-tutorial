@@ -1,6 +1,9 @@
 // 引入 app 和窗口引用
 const { app, BrowserWindow } = require("electron");
 
+// 初始化 remote
+require("@electron/remote/main").initialize();
+
 // 创建窗口函数
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -15,7 +18,7 @@ const createWindow = () => {
   });
 
   // 加载 index.html
-  win.loadFile("index.html");
+  win.loadFile("demo.html");
   // 打开开发工具
   // mainWindow.webContents.openDevTools()
 };
@@ -31,6 +34,11 @@ app.whenReady().then(() => {
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
+});
+
+// 开启 remote
+app.on("browser-window-created", (_, window) => {
+  require("@electron/remote/main").enable(window.webContents);
 });
 
 // 除了 macOS 外，当所有窗口都被关闭的时候退出程序。 There, it's common
