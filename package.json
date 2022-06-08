@@ -1,0 +1,12 @@
+{
+  "name": "electron-tutorial",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^19.0.3"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/electron ."
+  }
+}
