@@ -1,5 +1,6 @@
 // 引入 app 和窗口引用
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, Menu } = require("electron");
+const { menu } = require("./main/menu");
 
 // 初始化 remote
 require("@electron/remote/main").initialize();
@@ -28,7 +29,8 @@ const createWindow = () => {
 // 部分 API 在 ready 事件触发后才能使用。
 app.whenReady().then(() => {
   createWindow();
-
+  // 创建菜单栏
+  Menu.setApplicationMenu(menu);
   app.on("activate", () => {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
