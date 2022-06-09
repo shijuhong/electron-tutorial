@@ -7,3 +7,8 @@ baidu.addEventListener("click", (e) => {
   const baiduHref = baidu.getAttribute("href");
   shell.openExternal(baiduHref);
 });
+
+const mybtn = document.getElementById("mybtn");
+mybtn.addEventListener("click", (e) => {
+  window.open("https://www.baidu.com");
+});
