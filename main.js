@@ -18,16 +18,16 @@ const createWindow = () => {
     },
   });
   // 创建并在页面内设置内嵌网页
-  const view = new BrowserView();
-  win.setBrowserView(view);
-  // 设置 view 样式和属性
-  view.setBounds({
-    x: 50,
-    y: 100,
-    width: 400,
-    height: 300,
-  });
-  view.webContents.loadURL("https://www.baidu.com");
+  // const view = new BrowserView();
+  // win.setBrowserView(view);
+  // // 设置 view 样式和属性
+  // view.setBounds({
+  //   x: 50,
+  //   y: 100,
+  //   width: 400,
+  //   height: 300,
+  // });
+  // view.webContents.loadURL("https://www.baidu.com");
   // 加载 index.html
   win.loadFile("demo2.html");
   // 打开开发工具
