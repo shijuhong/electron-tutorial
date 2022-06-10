@@ -29,7 +29,7 @@ const createWindow = () => {
   // });
   // view.webContents.loadURL("https://www.baidu.com");
   // 加载 index.html
-  win.loadFile("./pages/dialog-test.html");
+  win.loadFile("./pages/online-check.html");
   // 打开开发工具
   // mainWindow.webContents.openDevTools()
 };
