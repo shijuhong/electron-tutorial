@@ -1,5 +1,11 @@
 // 引入 app 和窗口引用
-const { app, BrowserWindow, Menu, BrowserView } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  Menu,
+  BrowserView,
+  globalShortcut,
+} = require("electron");
 const { menu } = require("./main/menu");
 
 // 初始化 remote
@@ -17,21 +23,14 @@ const createWindow = () => {
       contextIsolation: false,
     },
   });
-  // 创建并在页面内设置内嵌网页
-  // const view = new BrowserView();
-  // win.setBrowserView(view);
-  // // 设置 view 样式和属性
-  // view.setBounds({
-  //   x: 50,
-  //   y: 100,
-  //   width: 400,
-  //   height: 300,
-  // });
-  // view.webContents.loadURL("https://www.baidu.com");
-  // 加载 index.html
+
+  // 加载 HTML 文件
   win.loadFile("./pages/notification.html");
-  // 打开开发工具
-  // mainWindow.webContents.openDevTools()
+
+  // 注册全局快捷键
+  globalShortcut.register("CommandOrControl+E", () => {
+    win.loadURL("https://www.baidu.com");
+  });
 };
 
 // 这段程序将会在 Electron 结束初始化
@@ -59,6 +58,14 @@ app.on("browser-window-created", (_, window) => {
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
 });
+
+app.on('will-quit', () => {
+  // 注销快捷键
+  // globalShortcut.unregister('CommandOrControl+X')
+
+  // 注销所有快捷键
+  globalShortcut.unregisterAll()
+})
 
 // In this file you can include the rest of your app's specific main process
 // code. 也可以拆分成几个文件，然后用 require 导入。
