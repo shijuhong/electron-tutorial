@@ -25,7 +25,7 @@ const createWindow = () => {
   });
 
   // 加载 HTML 文件
-  win.loadFile("./pages/notification.html");
+  win.loadFile("./pages/copy.html");
 
   // 注册全局快捷键
   globalShortcut.register("CommandOrControl+E", () => {
